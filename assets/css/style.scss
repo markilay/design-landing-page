@@ -1,11 +1,72 @@
 @import "./base";
 @import "./utils";
 
-.burger {
-  display: none;
+.body-container {
+  transition: $transition-bar;
 }
 .menu-bar {
+  transition: $transition-bar;
   display: none;
+  position: fixed;
+  width: 20rem;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: #181920;
+  padding: 1rem;
+  z-index: 11;
+  transform: translateX(-20rem);
+
+  li {
+    list-style: none;
+    margin: 0 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 300;
+    padding: 1rem;
+    padding-left: 0;
+    text-align: left;
+    border-bottom: 1px solid $shadowy-color;
+    a {
+      color: white;
+    }
+    &:last-child {
+      border: none;
+      button {
+        font-family: "Roboto", Helvetica, sans-serif;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 300;
+
+        padding-left: 0;
+        text-align: left;
+        background: transparent;
+      }
+    }
+  }
+}
+
+.title-bar {
+  transition: $transition-bar;
+  padding: 1rem;
+  z-index: 5;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  display: none;
+  background: #333544;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  top: 0;
+  a {
+    margin: 0 auto;
+    font-size: 1.5rem;
+  }
+
+  .burger {
+    @include burger;
+  }
 }
 
 .page-arrow {
@@ -376,6 +437,9 @@ footer {
 }
 
 @media screen and (max-width: 1200px) {
+  p {
+    line-height: initial;
+  }
   header {
     .header-wraper {
       left: 20%;
@@ -590,52 +654,18 @@ footer {
 }
 
 @media screen and (max-width: 735px) {
-  .menu-bar.trasformed {
+  .title-bar {
+    display: flex;
+  }
+  .menu-bar.transformed {
     transform: translateX(0);
     position: fixed;
   }
   .menu-bar {
-    transition: all 0.5s;
     display: block;
-    position: absolute;
-    width: 20rem;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background: #181920;
-    padding: 1rem;
-    z-index: 11;
-    transform: translateX(-20rem);
-
-    li {
-      list-style: none;
-      margin: 0 1.5rem;
-      font-size: 1.5rem;
-      font-weight: 300;
-      padding: 1rem;
-      padding-left: 0;
-      text-align: left;
-      border-bottom: 1px solid $shadowy-color;
-      a {
-        color: white;
-      }
-      &:last-child {
-        border: none;
-        button {
-          font-family: "Roboto", Helvetica, sans-serif;
-          border: none;
-          color: white;
-          font-size: 1.5rem;
-          font-weight: 300;
-
-          padding-left: 0;
-          text-align: left;
-          background: transparent;
-        }
-      }
-    }
   }
-  header.trasformed {
+  .body-container.transformed,
+  .title-bar.transformed {
     transform: translateX(20rem);
   }
   header {
@@ -645,6 +675,7 @@ footer {
     }
 
     nav {
+      display: none;
       background: #333544;
       position: fixed;
       width: 100%;
@@ -656,18 +687,7 @@ footer {
       }
 
       .burger {
-        display: block;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        text-align: center;
-        width: 60px;
-        line-height: 2.3;
-        background: #e44c65;
-        color: $shadowy-color;
-        font-size: 1.7rem;
-        cursor: pointer;
+        @include burger;
       }
       .menu {
         display: none;
@@ -819,12 +839,13 @@ footer {
   }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 576px) {
   .menu-bar {
     transform: translateX(-16rem);
     width: 16rem !important;
   }
-  header.trasformed {
+  .body-container.transformed,
+  .title-bar.transformed {
     transform: translateX(16rem);
   }
   header,

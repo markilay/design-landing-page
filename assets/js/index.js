@@ -1,6 +1,6 @@
 const section = document.querySelectorAll(".slide");
 const arrow = document.querySelectorAll(".arrow-nav");
-const burger = document.querySelector(".burger");
+const burger = document.querySelector(".title-bar .burger");
 
 function debounce(func, wait = 20, immediate = true) {
   var timeout;
@@ -42,8 +42,9 @@ function scrollSlide(e) {
 }
 
 function openMenu() {
-  document.querySelector("header").classList.toggle("trasformed");
-  document.querySelector(".menu-bar").classList.toggle("trasformed");
+  document.querySelector(".body-container").classList.toggle("transformed");
+  document.querySelector(".menu-bar").classList.toggle("transformed");
+  document.querySelector(".title-bar").classList.toggle("transformed");
 }
 
 window.addEventListener("scroll", debounce(scrollSlide));

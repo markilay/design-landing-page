@@ -1,6 +1,7 @@
 $header-img: "https://images.unsplash.com/photo-1568667256531-7d5ac92eaa7a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=658&q=80";
 $section-first-img: "https://images.unsplash.com/photo-1501959181532-7d2a3c064642?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1370&q=80";
 $shadowy-color: rgba(255, 255, 255, 0.5);
+$transition-bar: all 0.5s;
 
 @mixin absolute($top: 0, $left: 0) {
   position: absolute;
@@ -76,4 +77,19 @@ $shadowy-color: rgba(255, 255, 255, 0.5);
     color: #e44c65;
     border-color: #e44c65;
   }
+}
+
+@mixin burger {
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  width: 60px;
+  line-height: 2.3;
+  background: #e44c65;
+  color: $shadowy-color;
+  font-size: 1.7rem;
+  cursor: pointer;
 }
